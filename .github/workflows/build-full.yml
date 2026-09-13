@@ -37,8 +37,8 @@ jobs:
             accept-flake-config = true
 
       - name: Build minimal image
-        run: nix build .#image-minimal
-
+        run: nix build .#image
+        
       - name: Upload image
         uses: actions/upload-artifact@v4
         with:
