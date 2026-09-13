@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  image-minimal:
+  image:
     name: Build image-minimal
     runs-on: ubuntu-latest
     timeout-minutes: 360
@@ -36,12 +36,12 @@ jobs:
             experimental-features = nix-command flakes
             accept-flake-config = true
 
-      - name: Build minimal image
+      - name: Build full image
         run: nix build .#image
         
       - name: Upload image
         uses: actions/upload-artifact@v4
         with:
-          name: puredarwin-minimal
-          path: result/puredarwin-minimal.img
+          name: puredarwin
+          path: result/puredarwin.img
           if-no-files-found: error
